@@ -44,7 +44,8 @@ public class HelloWorld {
 		
 		// Attempting train test split
 		data.randomize(new Random(1));
-		data.stratify(10);		
+		data.stratify(10);
+		
 		// Create a train instance and append to it				
 		Instances train = data.trainCV(10,1, new Random(1));
 		
