@@ -1,0 +1,15 @@
+package test;
+
+public class GetPixels {
+	static String direct_path;
+
+	public GetPixels( String direc_path ) {
+	     direct_path = direc_path;
+	}
+
+	public static void print_path(String[] args) {
+		System.out.print(direct_path);
+
+	}
+
+}

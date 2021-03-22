@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-15">
+		<attributes>
+			<attribute name="module" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/admin/eclipse-workspace/HelloWorld/weka_jar/arpack_combined_all-0.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/admin/eclipse-workspace/HelloWorld/weka_jar/bounce-0.18.jar"/>
+	<classpathentry kind="lib" path="C:/Users/admin/eclipse-workspace/HelloWorld/weka_jar/core-1.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/admin/eclipse-workspace/HelloWorld/weka_jar/java-cup-11b-2015.03.26.jar"/>
+	<classpathentry kind="lib" path="C:/Users/admin/eclipse-workspace/HelloWorld/weka_jar/java-cup-11b-runtime-2015.03.26.jar"/>
+	<classpathentry kind="lib" path="C:/Users/admin/eclipse-workspace/HelloWorld/weka_jar/jniloader-1.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/admin/eclipse-workspace/HelloWorld/weka_jar/mtj-1.0.4.jar"/>
+	<classpathentry kind="lib" path="C:/Users/admin/eclipse-workspace/HelloWorld/weka_jar/native_ref-java-1.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/admin/eclipse-workspace/HelloWorld/weka_jar/native_system-java-1.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/admin/eclipse-workspace/HelloWorld/weka_jar/netlib-java-1.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/admin/eclipse-workspace/HelloWorld/weka_jar/netlib-native_ref-linux-armhf-1.1-natives.jar"/>
+	<classpathentry kind="lib" path="C:/Users/admin/eclipse-workspace/HelloWorld/weka_jar/netlib-native_ref-linux-i686-1.1-natives.jar"/>
+	<classpathentry kind="lib" path="C:/Users/admin/eclipse-workspace/HelloWorld/weka_jar/netlib-native_ref-linux-x86_64-1.1-natives.jar"/>
+	<classpathentry kind="lib" path="C:/Users/admin/eclipse-workspace/HelloWorld/weka_jar/netlib-native_ref-osx-x86_64-1.1-natives.jar"/>
+	<classpathentry kind="lib" path="C:/Users/admin/eclipse-workspace/HelloWorld/weka_jar/netlib-native_ref-win-i686-1.1-natives.jar"/>
+	<classpathentry kind="lib" path="C:/Users/admin/eclipse-workspace/HelloWorld/weka_jar/netlib-native_ref-win-x86_64-1.1-natives.jar"/>
+	<classpathentry kind="lib" path="C:/Users/admin/eclipse-workspace/HelloWorld/weka_jar/netlib-native_system-linux-armhf-1.1-natives.jar"/>
+	<classpathentry kind="lib" path="C:/Users/admin/eclipse-workspace/HelloWorld/weka_jar/netlib-native_system-linux-i686-1.1-natives.jar"/>
+	<classpathentry kind="lib" path="C:/Users/admin/eclipse-workspace/HelloWorld/weka_jar/netlib-native_system-linux-x86_64-1.1-natives.jar"/>
+	<classpathentry kind="lib" path="C:/Users/admin/eclipse-workspace/HelloWorld/weka_jar/netlib-native_system-osx-x86_64-1.1-natives.jar"/>
+	<classpathentry kind="lib" path="C:/Users/admin/eclipse-workspace/HelloWorld/weka_jar/netlib-native_system-win-i686-1.1-natives.jar"/>
+	<classpathentry kind="lib" path="C:/Users/admin/eclipse-workspace/HelloWorld/weka_jar/netlib-native_system-win-x86_64-1.1-natives.jar"/>
+	<classpathentry kind="lib" path="C:/Users/admin/eclipse-workspace/HelloWorld/weka_jar/weka-stable-3.8.0.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

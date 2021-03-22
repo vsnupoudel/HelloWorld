@@ -1,0 +1,66 @@
+package test;
+import weka.*;
+import weka.classifiers.Classifier;
+import weka.core.Instances;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException; 
+import java.io.BufferedWriter;
+import java.nio.file.Files;
+import java.nio.file.StandardCopyOption;
+import weka.core.WekaPackageManager;
+
+public class HelloWorld {
+	static String fileDirectoryPath = "D:\\handwritten_digit_corpus_2\\handwritten_digit_corpus";
+	static String skPath = "D:\\handwritten_digit_corpus_2\\handwritten_digit_corpus\\skeleton";
+	
+	public static void main(String[] args) throws IOException {
+		System.out.println("File writing started...");
+		writefile(fileDirectoryPath,skPath );
+		System.out.println("File writing completed...");
+	// Read in file and run classifier
+		//weka.core.WekaPackageManager.loadPackages(true);
+		FileReader readf = new FileReader("D:\\handwritten_digit_corpus_2\\handwritten_digit_corpus\\skeleton.arff"); 
+		weka.core.Instances data = new weka.core.Instances(readf);
+	}
+	
+	public static void writefile(String fileDirectoryPath, String skPath) throws IOException {
+		// copy the skeleton file
+		File dired = new File(fileDirectoryPath+"\\skeleton.arff");
+		File skdir = new File(skPath+"\\skeleton.arff");
+		Files.copy( skdir.toPath() , dired.toPath() , StandardCopyOption.REPLACE_EXISTING);
+		// for writing to a .csv
+		BufferedWriter br = new BufferedWriter(
+				new FileWriter(fileDirectoryPath+"\\skeleton.arff" , true) );
+		StringBuilder sb = new StringBuilder();
+		// File directory
+		File dir = new File(fileDirectoryPath);
+		  File[] directoryListing = dir.listFiles();
+		  if (directoryListing != null) {
+		    for (File child : directoryListing) {
+		    if ( child.getName().contains(".png") ) {
+				GetPixels getpixels = new GetPixels(child.getAbsolutePath());
+				int[] pixels = getpixels.get_pixels();		
+			
+				
+
+				// Append strings from array
+				for (int element : pixels) {
+				 sb.append(element);
+				 sb.append(",");
+				}
+				//sb.deleteCharAt( sb.length()- 1);
+				sb.append(child.getAbsoluteFile().getName().substring(0, 1) );
+				sb.append("\n");
+				      
+		    }		    
+		    }	   
+		  } 	
+		br.write(sb.toString());
+		br.close();	 
+		
+		// read the file using weka now
+	}
+
+}

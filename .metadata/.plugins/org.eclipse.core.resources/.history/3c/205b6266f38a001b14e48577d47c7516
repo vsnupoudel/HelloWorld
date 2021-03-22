@@ -1,0 +1,105 @@
+package test;
+import weka.*;
+import weka.classifiers.Classifier;
+import weka.classifiers.evaluation.Evaluation;
+import weka.core.Instances;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException; 
+import java.io.BufferedWriter;
+import java.nio.file.Files;
+import java.nio.file.StandardCopyOption;
+import java.util.Random;
+
+import weka.classifiers.trees.J48;
+import weka.classifiers.functions.SMO;
+
+
+public class HelloWorld {
+	
+//	public HelloWorld(String fileDpath, String directoryPath, String skPath) {
+//		
+//	}
+	
+	
+	
+	// will copy a fresh copy of skeleton.arff into this folder
+	static String fileDirectoryPath = "D:\\handwritten_digit_corpus_2\\handwritten_digit_corpus\\skeleton.arff";
+	// Put all the images (.pngs) in this folder
+	static String directoryPath = "D:\\handwritten_digit_corpus_2\\handwritten_digit_corpus";
+	// put the readymade skeleton.arff file in this folder ( without data)
+	static String skPath = "D:\\handwritten_digit_corpus_2\\handwritten_digit_corpus\\skeleton\\skeleton.arff";
+	
+	public static void main(String[] args) throws Exception {
+		//Convert images to a arff file with pixel values
+		// A skeleton arff file with column definition already present in skeleton folder
+		System.out.println("File writing started...");
+		writefile(fileDirectoryPath,skPath , directoryPath);
+		System.out.println("File writing completed...");
+		
+	// Read in file and run classifier
+		//weka.core.WekaPackageManager.loadPackages(true);
+		System.out.println("Reading arff file...");
+		FileReader readf = new FileReader(fileDirectoryPath); 
+		weka.core.Instances data = new weka.core.Instances(readf);
+		data.setClassIndex(data.numAttributes() - 1);		
+
+//		Define classifier
+//		J48 tree = new J48();
+//		tree.buildClassifier(data);
+		
+		// Work in progress
+		System.out.println("Building and evaluating model...");
+		
+		SMO svm = new SMO();
+		svm.buildClassifier(data);
+		
+		 Evaluation eval = new Evaluation(data);
+		 eval.crossValidateModel(svm, data, 3 , new Random(1));
+		 //print stats -- do not require to calculate confusion mtx, weka does it!
+//		 System.out.println(svm);
+		 System.out.println(eval.toSummaryString());
+		 System.out.println(eval.toMatrixString());
+		 System.out.println(eval.toClassDetailsString());
+	}
+	
+	public static void writefile(String fileDirectoryPath, String skPath, String directoryPath) 
+			throws IOException {
+		// copy the skeleton file
+		File dired = new File(fileDirectoryPath);
+		File skdir = new File(skPath);
+		Files.copy( skdir.toPath() , dired.toPath() , StandardCopyOption.REPLACE_EXISTING);
+		// for writing to a .csv
+		BufferedWriter br = new BufferedWriter(
+				new FileWriter(fileDirectoryPath, true) );
+		StringBuilder sb = new StringBuilder();
+		// File directory
+		File dir = new File(directoryPath);
+		  File[] directoryListing = dir.listFiles();
+		  if (directoryListing != null) {
+		    for (File child : directoryListing) {
+		    if ( child.getName().contains(".png") ) {
+				GetPixels getpixels = new GetPixels(child.getAbsolutePath());
+				int[] pixels = getpixels.get_pixels();		
+			
+				// Append strings from array
+				for (int element : pixels) {
+				 sb.append(element);
+				 sb.append(",");
+				}
+		// append the class to the en
+				sb.append(child.getAbsoluteFile().getName().substring(0, 1) );
+				sb.append("\n");
+				      
+		    }		    
+		    }	   
+		  } 	
+		  // write the whole file in the end
+		br.write(sb.toString());
+		br.close();	 
+		
+		
+	}
+
+}
