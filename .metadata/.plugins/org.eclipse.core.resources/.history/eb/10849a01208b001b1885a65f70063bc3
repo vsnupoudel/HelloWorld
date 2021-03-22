@@ -80,7 +80,7 @@ public class HelloWorld {
 		
 		System.out.println("Evaluating  model...");	
 		
-		Evaluation eval = new Evaluation(train);
+		Evaluation eval = new Evaluation(test);
 		eval.evaluateModel(svm, test);
 			 
 		 //print stats -- not required to calculate confusion mtx, weka does it!
